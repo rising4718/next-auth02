@@ -1,9 +1,10 @@
-import Image from 'next/image'
+import getCurrentUser from '@/app/actions/getCurrentUser'
 
-export default function Home() {
-  return (
-  <div>
-    <h1>Main</h1>
-  </div>
-  )
+// メインページ
+const Home = async () => {
+  const currentUser = await getCurrentUser()
+
+  return <div className="text-center">{currentUser ? <div>認証中</div> : <div>未認証</div>}</div>
 }
+
+export default Home
